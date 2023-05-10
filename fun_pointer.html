@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Function pointer declaration</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color:rgb(87, 195, 202);
+  padding-left: 10px;
+}
+
+/* Style the header */
+.header {
+ 
+  padding: 20px;
+  text-align: center;
+}
+
+/* Style the top navigation bar */
+
+
+/* Style the topnav links */
+
+
+/* Change color on hover */
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #0f88e4;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: rgb(8, 59, 55);
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(34, 212, 168, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #aeebdd;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+#panel, .flip {
+  font-size: 16px;
+  padding: 10px;
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+  border: solid 1px #a6d8a8;
+  margin: auto;
+}
+
+#panel {
+  display: none;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+}
+
+/* Left and right column */
+.column.side {
+  width: 25%;
+}
+
+/* Middle column */
+.column.middle {
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column.side, .column.middle {
+    width: 100%;
+  }
+}
+
+/* Style the footer */
+.footer {
+  
+  padding: 10px;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>C Language</h1>  
+  <img src="My_Photo.jpg" style="max-width:100%;height:auto;">
+  <p>TOPIC : Function Pointer</p>
+  </div>
+
+<ul id="TOP">
+  <li><a href="./index.html">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">function pointer</a>
+    <div class="dropdown-content">
+      <a href="#declaration">How to declare function pointer in C?</a>
+      <a href="#fun_ptr Memory">fun_ptr Memory</a>
+      <a href="#fun_ptr campare">fun_ptr campare</a>
+      <a href="#fun_ptr Assigning function address">Assigning function address to a function pointer</a>
+      <a href="#fun_ptr Calling a function">Calling a function using the function pointer</a>
+      <a href="#fun_ptr arguments">Function pointer as arguments</a>
+      <a href="#fun_ptr Return">Return a function pointer from the function</a>
+      <a href="#fun_ptr Use of array">Use of array of function pointers</a>
+      <a href="#fun_ptr Use of typedef">Use of typedef with the function pointer</a>
+      <a href="#fun_ptr structure">function pointers in the structure</a>
+      <a href="#fun_ptr callback function">Function pointer as a callback function</a>
+	  
+	
+    </div>
+  </li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
+    <div class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
+    <div class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
+    <div class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </li>
+</ul>
+<div>
+
+
+
+
+
+
+ <h2 id="declaration"> How to declare function pointer in C?</h2>
+ <p>
+ <ol>
+<li>void (*fpData)(void);</li><br><br>
+<li>int  (*fpData)(int);</li><br><br>
+<li>int  (*fpData)(char *);</li><br><br>
+<li>int* (*fpData)(char *);</li><br><br>
+<li>int  (*fpData)(int, char *);</li><br><br>
+<li>int* (*fpData)(int, int *, char *);</li><br><br>
+<li>int* (*fpData)(int , char, int (*paIndex)[3]);</li><br><br>
+<li>int* (*fpData)(int , int (*paIndex)[3] , int (* fpMsg) (const char *));</li><br><br>
+<li>int* (*fpData)(int (*paIndex)[3] , int (* fpMsg) (const char *), int (* fpCalculation[3]) (const char *));</li><br><br><br>
+<li>int* (*fpData[2])(int (*paIndex)[3] , int (* fpMsg) (const char *), int (* fpCalculation[3]) (const char *));</li><br><br><br>
+<li>int* (*(*fpData)(const char *))(int (*paIndex)[3] , int (* fpMsg) (const char *), int (* fpCalculation[3]) (const char *));</li><br><br><br>
+</ol>
+</p>
+
+<h2>Initialization of function pointer in C:</h2><a href="#TOP">TOP</a>
+<p>We have already discussed that a function pointer is similar to normal pointers. 
+So after the declaration of a function pointer, we need to initialize it like normal pointers.
+<mark>A function pointer is initialized to the address of a function but the signature of function pointer should be the same as the function.
+Before using the function pointer we need to declare it and the prototype must be similar to the function which addresses you want to store.</mark></p>
+
+<h3>Examples</h3>
+
+<p>#include <stdio.h><br>
+// A function with an const char pointer parameter<br>
+// and void return type<br>
+void DisplayMessage(const char *msg)<br>
+{<br>
+ printf("Message =>> %s\n", msg);<br>
+}<br>
+int main()<br>
+{<br>
+ // pfDisplayMessage is a pointer to function DisplayMessage()<br>
+ <mark>void ( *pfDisplayMessage) (const char *) = &DisplayMessage;</mark><br>
+ // Invoking DisplayMessage() using pfDisplayMessage<br>
+ <mark>(*pfDisplayMessage)("Hello Gangadhara");</mark><br>
+ return 0;<br>
+}</p>
+
+<h2 id="fun_ptr Memory">1) Memory allocation and deallocation for function pointer: </h2><a href="#TOP">TOP</a>
+<p>Dynamic memory allocation is<mark> not useful for function pointers</mark>. We create the function pointer only to point to a function. 
+So if you allocate the dynamic memory for the function pointer then there is no importance to create the function pointer.<br>
+<mark>// Not useful expression<br>
+void (*pfData) (int)  = malloc(sizeof(pfData));<br>
+</mark> </p>
+<h2 id="fun_ptr campare">2) Comparing function pointers:</h2><a href="#TOP">TOP</a>
+<p>We can use the <mark>comparison operators (== or != ) with function pointer</mark>. 
+These operators are useful to check that the function pointer is pointing to a valid memory or not. 
+Before calling a function pointer in the program you must check its validity and it is very good practice to check the validity of function pointer.
+When we compare two function pointers then we have to remember that two pointers of the 
+<br><mark>--same type compare equal if and only if they are both null, <br>--both points to the same function or<br> --both represent the same address</mark>
+In your program, if the function pointers are not initialized by the valid address and your application wants to execute the function pointer then the application might be crashed.
+ In the case of drivers, you might face BSOD (Blue screen of death ) or system hangs issues.
+
+So whenever you create function pointer in your program then at the time of creation you must initialize it NULL. 
+Also before executing the function pointer, you must check its validity by comparing it with the null pointer ( != NULL ).
+
+<h3>For Example,</h3>
+<p>if( pfLedOnOff!= NULL)<br>
+{<br>
+ // calling of function function<br>
+ (*pfLedOnOff) (iLedState); <br>
+}<br>
+else<br>
+{<br>
+ retrun Invalid;<br>
+}</p>
+<h2 id="fun_ptr Assigning function address">3) Assigning function address to a function pointer:</h2><a href="#TOP">TOP</a>
+<p>There is two way to assign the address of the function to a pointer to function. You can use the address-of operator ( &) with function name or you can use directly function name (Function name also represents the beginning address of the function).</p>
+
+<p>//Assigning function address to the function pointer<br>
+Function_Pointer = Function_Name;<br>
+ or<br>
+//Assigning function address to the function pointer<br>
+Function_Pointer = &Function_Name;</p>
+
+
+<h2 id="fun_ptr Calling a function">4) Calling a function using the function pointer:</h2><a href="#TOP">TOP</a>
+<p>After assigning the function address to the function pointer, you can call the function using the function pointer. Bellow, we are describing the function calling by function pointer in a few steps. So let see the mentioned steps to how to use a pointer to function for calling a function.</p>
+
+<p>DEF:</p>
+
+<p>//Function pointer which has argument list</p>
+
+<p>(*Function_Name)(ArgumentList);</p>
+
+<p> or</p>
+
+<p>//Function pointer without argument list</p>
+
+<p>(*Function_Name)();</p>
+
+<p>After the declaration of the function pointer next step is to initialize it with function address.</p>
+
+<p>pfAddTwoNumber = AddTwoNumber;<br>
+</p>
+
+<p>Now we can call the function using the function pointer with the help of indirection operator ( * )and braces.</p>
+
+<p>//Calling the function using the function pointer<br>
+iRetValue = (*pfAddTwoNumber)(10,20);<br>
+ or<br>
+//Calling the function using the function pointer <br>
+iRetValue = pfAddTwoNumber(10,20);<br>
+</p>
+
+<p>Note: You can omit the indirection operator at the time of function call using the function pointer.</p>
+
+
+
+<p>
+#include <stdio.h><br>
+#include <stdlib.h><br>
+//function used to add two numbers<br>
+int AddTwoNumber(int iData1,int iData2)<br>
+{<br>
+ return (iData1 + iData2);<br>
+}<br>
+int main(int argc, char *argv[])<br>
+{<br>
+ int iRetValue = 0;<br>
+ //Declaration of function pointer</p>
+
+<p> int (*pfAddTwoNumber)(int,int) = NULL;</p>
+
+<p> //initialize the function pointer</p>
+
+<p> pfAddTwoNumber = AddTwoNumber;</p>
+
+<p> //Calling the function using the function pointer</p>
+
+<p> iRetValue = (*pfAddTwoNumber)(10,20);</p>
+
+<p> //display addition of two number</p>
+
+<p> printf("\n\nAddition of two number = %d\n\n",iRetValue);</p>
+
+<p> return 0;<br>
+}</p>
+
+
+<h2 id="fun_ptr arguments">5) Function pointer as arguments</h2><a href="#TOP">TOP</a>
+<p>We can pass the function pointer as an argument into the function. Let’s take an example to understand how to pass a function pointer in a function and what its benefits.</p>
+
+<p>In the below example code, I am creating a function ArithMaticOperation that takes three arguments two integers and one function pointer. This function will invoke the passed function using the function pointer which performs the arithmetic operation on the passed integer variable.</p>
+
+<p>The benefit is that using one function user can perform multiple arithmetic operations. Like addition, subtraction, multiplication, and division of two numbers.</p>
+
+<p>#include <stdio.h><br>
+typedef int (*pfunctPtr)(int, int); /* function pointer */<br>
+//function pointer as arguments<br>
+int ArithMaticOperation(int iData1,int iData2, pfunctPtr Calculation)<br>
+{<br>
+ int iRet =0;<br>
+ iRet = Calculation(iData1,iData2);<br>
+ return iRet;<br>
+}<br>
+/*function add two number*/<br>
+int AddTwoNumber(int iData1,int iData2)<br>
+{<br>
+ return (iData1 + iData2);<br>
+}<br>
+/*function subtract two number*/<br>
+int SubTwoNumber(int iData1,int iData2)<br>
+{<br>
+ return (iData1 - iData2);<br>
+}<br>
+/*function multiply two number*/<br>
+int MulTwoNumber(int iData1,int iData2)<br>
+{<br>
+ return (iData1 * iData2);<br>
+}<br>
+int main()<br>
+{<br>
+ int iData1 = 0;<br>
+ int iData2 = 0;<br>
+ int iChoice = 0;<br>
+ int Result = 0;<br>
+ printf("Enter two Integer Data \n\n");<br>
+ scanf("%d%d",&iData1,&iData2);<br>
+ printf("Enter 1 for Addition \n\n");<br>
+ printf("Enter 2 for Subtraction \n\n");<br>
+ printf("Enter 3 for Multiplication \n\n");<br>
+ printf("User choice :");<br>
+ scanf("%d",&iChoice);<br>
+ switch(iChoice)<br>
+ {<br>
+ case 1:<br>
+ Result = ArithMaticOperation(iData1,iData2,AddTwoNumber);<br>
+ break;<br>
+ case 2:<br>
+ Result = ArithMaticOperation(iData1,iData2,SubTwoNumber);<br>
+ break;<br>
+ case 3:<br>
+ Result = ArithMaticOperation(iData1,iData2,MulTwoNumber);<br>
+ break;<br>
+ default:<br>
+ printf("Enter Wrong Choice\n\n");<br>
+ }<br>
+ printf("\n\nResult = %d\n\n",Result);<br>
+ return 0;<br>
+}</p>
+
+
+
+
+
+<h2 id="fun_ptr Return">6) Return a function pointer from the function</h2><a href="#TOP">TOP</a>
+
+<p>Yes, we can return function pointer from the function. See the below code where I am returning a function pointer from the function. In the example code, I am using a typedef for defining a type for a function pointer. If you are new and want to learn about the typedef you can see below articles,</p>
+
+<p>#include <stdio.h><br>
+/* type declartion of function pointer */</p>
+
+<p>typedef int (*pfunctPtr)(int, int);</p>
+
+<p>/*function add two number*/</p>
+
+<p>int AddTwoNumber(int iData1,int iData2)<br>
+{<br>
+ return (iData1 + iData2);<br>
+}</p>
+
+<p>/*function subtract two number*/<br>
+int SubTwoNumber(int iData1,int iData2)<br>
+{<br>
+ return (iData1 - iData2);<br>
+}<br>
+/*function multiply two number*/</p>
+
+<p>int MulTwoNumber(int iData1,int iData2)<br>
+{<br>
+ return (iData1 * iData2);<br>
+}<br>
+//Return function pointer</p>
+
+<p>pfunctPtr ArithMaticOperation(int iChoice)<br>
+{<br>
+ //function pointer</p>
+
+<p> pfunctPtr pArithmaticFunction = NULL;</p>
+
+<p> switch(iChoice)<br>
+ {<br>
+ case 1:<br>
+ pArithmaticFunction = AddTwoNumber;<br>
+ break;<br>
+ case 2:<br>
+ pArithmaticFunction = SubTwoNumber;<br>
+ break;<br>
+ case 3:<br>
+ pArithmaticFunction = MulTwoNumber;<br>
+ break;<br>
+ }<br>
+ return pArithmaticFunction;<br>
+}<br>
+int main(void)<br>
+{<br>
+ int iData1 = 0;<br>
+ int iData2 = 0;<br>
+ int iChoice = 0;<br>
+ int Result = 0;<br>
+ pfunctPtr pArithmaticFunction = NULL; //function pointer</p>
+
+<p> printf("Enter two Integer Data \n\n");</p>
+
+<p> scanf("%d%d",&iData1,&iData2);</p>
+
+<p> printf("Enter 1 for Addition \n\n");</p>
+
+<p> printf("Enter 2 for Subtraction \n\n");</p>
+
+<p> printf("Enter 3 for Multiplication \n\n");</p>
+
+<p> scanf("%d",&iChoice);</p>
+
+<p> pArithmaticFunction = ArithMaticOperation(iChoice);</p>
+
+<p> //verify the pointers</p>
+
+<p> if(pArithmaticFunction != NULL)<br>
+ {<br>
+ Result = (*pArithmaticFunction) (iData1,iData2);</p>
+
+<p> printf("Result = %d\n\n",Result);<br>
+ }<br>
+ else<br>
+ {<br>
+ printf("Please enter the valid choice\n");<br>
+ }</p>
+
+<p> return 0;<br>
+}</p>
+
+
+
+
+<h2 id="fun_ptr Use of array">7) Use of array of function pointers</h2><a href="#TOP">TOP</a>
+
+<p>We can create an array of function pointers like another pointer. The array of function pointers offers the facility to access the function using the index of the array.</p>
+
+<p>Let us see an example where we are creating an array of function pointers and initializing it with functions. The signature of the function pointer and function must be the same. In this example, each function takes two integers and returns one integer. So let see the code,</p>
+
+<p>#include <stdio.h><br>
+#include <stdlib.h><br>
+//Add two number<br>
+int AddTwoNumber(int iData1,int iData2)<br>
+{<br>
+ return (iData1 + iData2);<br>
+}<br>
+//Subtract two number<br>
+int SubTwoNumber(int iData1,int iData2)<br>
+{<br>
+ return (iData1 - iData2);<br>
+}<br>
+//Multilply two number<br>
+int MulTwoNumber(int iData1,int iData2)<br>
+{<br>
+ return (iData1 * iData2);<br>
+}<br>
+// Main function<br>
+int main(int argc, char *argv[])<br>
+{<br>
+ int iRetValue = 0;<br>
+ //Declaration of array of function pointer<br>
+ int (*apfArithmatics [3])(int,int) = {AddTwoNumber,SubTwoNumber,MulTwoNumber};<br>
+ //Calling the Add function using index of array<br>
+ iRetValue = (*apfArithmatics [0])(20,10);<br>
+ //display addition of two number<br>
+ printf("\n\nAddition of two number = %d\n\n",iRetValue);<br>
+ //Calling the subtract function using index of array<br>
+ iRetValue = (*apfArithmatics[1])(20,10);<br>
+ //display subtraction of two number<br>
+ printf("\n\nsubtraction of two number = %d\n\n",iRetValue);<br>
+ //Calling the multiply function using index of array<br>
+ iRetValue = (*apfArithmatics[2])(20,10);<br>
+ //display multiplication of two number<br>
+ printf("\n\nmultiplication of two number = %d\n\n",iRetValue);<br>
+ return 0;<br>
+}</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="fun_ptr Use of typedef">8) Use of typedef with the function pointer</h2><a href="#TOP">TOP</a>
+<p>Using a typedef, we can make the declaration of function pointer easy and readable. The typedef is very helpful when we create an array of the function pointer or a function returns a function pointer. Let us see the example,</p>
+<mark>
+<p>//typedef of array of function pointers<br>
+typedef int (*apfArithmatics[3])(int,int);<br>
+</p></mark>
+
+<p>Now, apfArithmatics is a type of array of a function pointer and we can create a variable using this created type. Let us see the example where we have created a variable and initializing it by three functions AddTwoNumber, SubTwoNumber, and MulTwoNumber.</p>
+
+<p>apfArithmatics aArithmaticOperation = { AddTwoNumber,SubTwoNumber,MulTwoNumber };<br>
+</p>
+
+<p>Some times in the code we need to typecast the address using the function pointer. It also becomes easy using the typedef.</p>
+
+<p><mark>void *pvHandle = NULL;<br>
+int (*pf)(int) = (int (*)(int)) pvHandle;<br>
+
+
+<br>Now using typedef,<br>
+
+<br>typedef int (*pf)(int);<br>
+pf JumptoApp = (pf)pvHandle;</mark>
+
+
+
+<h2 id="fun_ptr structure">9) function pointers in the structure</h2><a href="#TOP">TOP</a>
+<p>C is not an object-oriented language, so it does not contain the member functions like C++. In short, In C language we can’t create the function in structure the C language. But using the function pointer we can provide these features. These function pointer will treat like the member function and we can also support polymorphism in C.<br>
+struct SERVER_COM<br>
+{<br>
+ int iLenData;<br>
+ void (*pfSend)(const char *pcData,const int ciLen);<br>
+ int (*pfRead)(char *pData);<br>
+} GATEWAYCOM;</p>
+
+
+<h2 id="fun_ptr callback function">10) Function pointer as a callback function</h2><a href="#TOP">TOP</a>
+<p>For windows, in a kernel-mode driver (KMDF), we use a lot of call back functions for the plug and play and device preparation. Each callback function is invoked by the operating system at specific events but we need to register to call back function using the function pointer.</p>
+<p>Let’s take an example, suppose there is a callback function MyUsbEvtDevicePrepareHardware. In this callback function, the driver does whatever is necessary to make the hardware ready to use. In the case of a USB device, this involves reading and selecting descriptors.</p>
+
+<p>// callback function<br>
+NTSTATUS<br>
+MyUsbEvtDevicePrepareHardware (<br>
+ _In_ WDFDEVICE Device,<br>
+ _In_ WDFCMRESLIST ResourceList,<br>
+ _In_ WDFCMRESLIST ResourceListTranslated<br>
+)<br>
+{<br>
+ //Code as per the requirements<br>
+}<br>
+</p>
+
+<p>Function pointer use to register the above call-back function.</p>
+
+<p>NTSTATUS (*pfPrepareHardware) (<br>
+ _In_ WDFDEVICE Device,<br>
+ _In_ WDFCMRESLIST ResourceList,<br>
+ _In_ WDFCMRESLIST ResourceListTranslated<br>
+);<br>
+</p>
+
+<p>We know that the name of the function is the beginning address of the function, so we can initialize the function pointer using the function name.</p>
+
+<p>pfPrepareHardware = MyUsbEvtDevicePrepareHardware;</p>
+
+<p>Now we can use pfPrepareHardware for the registration of MyUsbEvtDevicePrepareHardware.</p>
+</p>
+</div>
+
+  
+
+
+
+<script>
+ 
+  </script>
+</body>
+</html>

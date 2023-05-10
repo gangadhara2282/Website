@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Function pointer declaration</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color:rgb(87, 195, 202);
+  padding-left: 10px;
+}
+
+/* Style the header */
+.header {
+ 
+  padding: 20px;
+  text-align: center;
+}
+
+/* Style the top navigation bar */
+table, th, td {  
+  border: 1px solid black;  
+  border-collapse: collapse;  
+}  
+th, td {  
+  padding: 10px;  
+}  
+table#alter tr:nth-child(even) {  
+  background-color: #eee;  
+}  
+table#alter tr:nth-child(odd) {  
+  background-color: #fff;  
+}  
+table#alter th {  
+  color: white;  
+  background-color: gray;  
+}  
+
+/* Style the topnav links */
+
+
+/* Change color on hover */
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #0f88e4;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: rgb(8, 59, 55);
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(34, 212, 168, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #aeebdd;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+#panel, .flip {
+  font-size: 16px;
+  padding: 10px;
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+  border: solid 1px #a6d8a8;
+  margin: auto;
+}
+
+#panel {
+  display: none;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+}
+
+/* Left and right column */
+.column.side {
+  width: 25%;
+}
+
+/* Middle column */
+.column.middle {
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column.side, .column.middle {
+    width: 100%;
+  }
+}
+
+/* Style the footer */
+.footer {
+  
+  padding: 10px;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>C Language</h1>  
+  <img src="My_Photo.jpg" style="max-width:100%;height:auto;">
+  <p>TOPIC : Storage class</p>
+  </div>
+
+<ul id="TOP">
+  <li><a href="./index.html">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Storage class</a>
+    <div class="dropdown-content">
+      <a href="#external">External</a>
+      <a href="#static">static</a>
+      <a href="#register">Register</a>
+      <a href="#automatic">Automatic</a>
+
+    </div>
+  </li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">storage-class-specifier </a>
+    <div class="dropdown-content">
+      <a href="#define">Storage classes definition</a>
+      <a href="#storage duration">storage duration</a>
+      <a href="#">Link 3</a>
+    </div>
+  </li>
+
+
+</ul>
+<div>
+
+<p>
+<table>  
+<caption><h2>Storage Classes in C</h2></caption>  
+<tr><th>Storage Classes</th><th>Storage Place</th><th>Default Value</th><th>Scope</th><th>Linkage</th><th>Lifetime</th></tr>  
+<tr><td>auto</td><td>	RAM,stack</td><td>Garbage value </td><td>local,Within the block in which it is declared </td><td>No </td> <td>With in the function, Live till the control remains in the block </td></tr>  
+<tr><td>extern</td><td>	RAM</td><td>Zero </td><td>Global,If the global variable is initialized then stored in .ds otherwise stored in .bss.  </td><td>By default, all global variable has external linkage</td><td> Till the end of the main program Maybe declared anywhere in the program,The extern specifier specifies static storage duration only when not combined with storage-class specifier  _Thread_local.  </td></tr>  
+<tr><td>static</td><td>	RAM,If the static variable is initialized then stored in .ds otherwise stored in .bss.</td><td>Zero </td><td>local, It can be used with functions at file scope and with variables at both file and block scope.The static specifier specifies static storage duration only when not combined with storage-class specifier  _Thread_local.  </td><td>Internal Linkage</td><td>Till the end of main program, Retain the value between the multiple function call </td></tr>  
+<tr><td>register</td><td>Register</td> <td>Garbage value</td><td>local </td><td>No</td><td>within the function </td></tr>  
+</table>
+</p>
+
+<h2 id="define">Storage class in C:</h2><a href="#TOP">TOP</a>
+<p><br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;In the context of C variables, storage class specifiers are part of the sequence of declaration specifiers that control 
+the <strong>linkage, storage duration, and memory location</strong>.</p>
+
+<h2>Storage-class specifiers supported by C:</h2>
+<p><br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;C provides the following storage-class specifiers. Items declared with the auto or register specifier have local or automatic lifetimes. Items declared with the static or extern specifier have global or static lifetimes (throughout the execution of the program)</p>
+<p><strong>auto -</strong>&gt; <em>automatic duration and no linkage</em><br /><strong>extern</strong> -&gt; <em>static duration and external linkage (unless already declared internal )</em><br /><strong>static</strong> -&gt; <em>static duration and internal linkage ( unless at block scope )</em><br /><strong>register</strong> -&gt; <em>automatic duration and no linkage (address of this variable cannot be taken)</em><br /><strong>Thread_local</strong> -&gt;<em> thread storage duration (since C11)</em><br /><strong>typedef</strong> -&gt; <em>typedef specifier is called a &lsquo;&lsquo;storage-class specifier&rsquo;&rsquo; for syntactic convenience only it does not specify storage.</em></p>
+<p><em>Note: We can use one storage-class specifier in the declaration of specifiers, except that _Thread_local may appear with static or extern.</em></p>
+
+
+<h3 id="storage duration">Automatic storage duration:</h3><a href="#TOP">TOP</a>
+<p><br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; The storage for the variable is allocated at the beginning of the enclosing code block&nbsp;"{"and deallocated at the end of the enclosing block&nbsp;"}".</p>
+<p>All variables defined within a block have automatic storage duration except those declared static, extern, or thread_local.</p>
+<p>&nbsp;</p>
+<h3>Static storage duration:</h3>
+<p><br />The storage for the variable is allocated when the program begins and deallocated when the program ends. Global and static variables have static storage duration. It is the reason they exist throughout the execution of the program.</p>
+<h3>Dynamic storage duration:</h3>
+<p><br />The storage for the variable is allocated and deallocated upon request by using dynamic memory allocation functions. For example, by using the malloc or calloc function we allocate the memory, and using the free function we delicate the allocated memory.</p>
+<h3>Thread storage duration.</h3>
+<p><br />The storage for the variable is allocated when the thread begins and deallocated when the thread ends. Each thread has its own instance of the object. Only objects declared thread_local (C11) have this storage duration. Only thread_local storage specifier is a type of storage specifier, which can be used together with static or extern to adjust linkage.</p>
+<p>Note:&nbsp;static storage duration is also called global storage duration.</p>
+
+
+<h3>There are four kinds of scopes:</h3>
+<ol>
+<li><strong>Block scope.</strong></li><br>
+<li><strong>File scope.</strong></li><br>
+<li><strong>Function scope.</strong></li><br>
+<li><strong>Function prototype scope.</strong></li><br>
+<li><strong>Scope</strong></li><br>
+<li><strong>Meaning</strong></li><br>
+</ol>
+<h3>&nbsp;</h3>
+<p>&nbsp;</p>
+<table class="table">
+<thead>
+<tr>
+<td><strong>Scope</strong></td>
+<td>
+<p><strong>Meaning</strong></p>
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Block Scope</strong></td>
+<td>If the declarator or type specifier that declares the identifier appears inside a block, the identifier has block scope, which terminates at the end of the associated block. The Identifiers of the block scope are visible in the block.</td>
+</tr>
+<tr>
+<td><strong>File Scope</strong></td>
+<td>If the declarator or type specifier that declares the identifier appears outside of any block or list of parameters, the identifier has file scope, which terminates at the end of the translation unit. The Identifiers of the File scope are visible all over the file.</td>
+</tr>
+<tr>
+<td><strong>Function Scope</strong></td>
+<td>Function scope is similar to the block scope, begins at the opening of the function, and terminates at the end of the associated function. A label name is the only kind of identifier that has a function scope. It can be used (in a goto statement) anywhere in the function in&nbsp;which it appears.</td>
+</tr>
+<tr>
+<td><strong>Function Prototype scope</strong></td>
+<td>If the declarator or type specifier that declares the identifier appears within the list of parameter declarations in a function prototype<strong>&nbsp;(&nbsp;</strong>not part of a function definition&nbsp;<strong>)</strong>, the identifier has a function prototype scope, which terminates at the end of the function declarator. The Identifiers of the Function Prototype scope are visible within the prototype.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3 id="external">External</h3><a href="#TOP">TOP</a>
+<p>
+<ol>
+<div>
+<li>The external storage class is used to tell the compiler that the variable defined as extern is declared with an external linkage elsewhere in the program.</li><br>
+<li>The variables declared as extern are not allocated any memory. It is only declaration and intended to specify that the variable is declared elsewhere in the program.</li><br>
+<li>The default initial value of external integral type is 0 otherwise null.</li><br>
+<li>We can only initialize the extern variable globally, i.e., we can not initialize the external variable within any block or method.</li><br>
+<li>An external variable can be declared many times but can be initialized at only once.</li><br><br>
+<li>If a variable is declared as external then the compiler searches for that variable to be initialized somewhere in the program which may be extern or static. If it is not, then the compiler will show an error.</li><br>
+</div>
+</ol>
+</p>
+<p><strong>Example 1</strong><br />#include &lt;stdio.h&gt; <br />int main() <br />{ <br />extern int a; <br />printf("%d",a); <br />} <br />Output</p>
+<p>main.c:(.text+0x6): undefined reference to `a'<br />collect2: error: ld returned 1 exit status</p>
+<p>&nbsp;</p>
+<p><strong>Example 2</strong><br />#include &lt;stdio.h&gt; <br />int a; <br />int main() <br />{ <br /> extern int a; // variable a is defined globally, the memory will not be allocated to a <br /> printf("%d",a); <br />} <br />Output</p>
+<p>0</p>
+<p><strong>Example 3</strong></p>
+<p>#include &lt;stdio.h&gt; <br />int a; <br />int main() <br />{ <br /> extern int a = 0; // this will show a compiler error since we can not use extern and initializer at same time <br /> printf("%d",a); <br />}<br /> <br />Output</p>
+<p>compile time error <br />main.c: In function ?main?:<br />main.c:5:16: error: ?a? has both ?extern? and initializer<br />extern int a = 0;</p>
+<p><strong>Example 4</strong></p>
+<p>#include &lt;stdio.h&gt; <br />int main() <br />{ <br /> extern int a; // Compiler will search here for a variable a defined and initialized somewhere in the pogram or not. <br /> printf("%d",a); <br />} <br />int a = 20;</p>
+<p>Output</p>
+<p>20</p>
+<p><br /><strong>Example 5</strong></p>
+<p><br />extern int a; <br />int a = 10; <br />#include &lt;stdio.h&gt; <br />int main() <br />{ <br /> printf("%d",a); <br />} <br />int a = 20; // compiler will show an error at this line <br /> <br />Output</p>
+<p>compile time error</p>
+
+
+
+<h2 class="h2"id="static" >Static</h2><a href="#TOP">TOP</a>
+<p>By default in the C language, the linkage of the global function and global variable is external that which means it is accessible by the same or another translation unit. But global function or variable with static keyword has internal linkage, so it only accesses within the translation unit (.c). It is not accessible by another translation unit. The static keyword protects your variable to access from another translation unit</p>
+<ol class="points">
+<li>The variables defined as static specifier can hold their value between the multiple function calls.</li><br>
+<li>Static local variables are visible only to the function or the block in which they are defined.</li><br>
+<li>A same static variable can be declared many times but can be assigned at only one time.</li><br>
+<li>Default initial value of the static integral variable is 0 otherwise null.</li><br>
+<li>The visibility of the static global variable is limited to the file in which it has declared.</li><br>
+<li>The keyword used to define static variable is static.</li><br>
+</ol>
+<h4 class="h4">Example 1</h4>
+<div class="codeblock">
+<div class="dp-highlighter">
+<div class="bar">&nbsp;</div>
+<p><span class="preprocessor">#include&lt;stdio.h&gt;</span>&nbsp;&nbsp;</p>
+<p><span class="keyword">static</span>&nbsp;<span class="datatypes">char</span>&nbsp;c;&nbsp;&nbsp;</p>
+<p><span class="keyword">static</span>&nbsp;<span class="datatypes">int</span>&nbsp;i;&nbsp;&nbsp;</p>
+<p><span class="keyword">static</span>&nbsp;<span class="datatypes">float</span>&nbsp;f;&nbsp;&nbsp;&nbsp;</p>
+<p><span class="keyword">static</span>&nbsp;<span class="datatypes">char</span>&nbsp;s[100];&nbsp;&nbsp;</p>
+<p><span class="keyword">void</span>&nbsp;main&nbsp;()&nbsp;&nbsp;</p>
+<p>{&nbsp;&nbsp;</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; printf(<span class="string">"%d&nbsp;%d&nbsp;%f&nbsp;%s"</span>,c,i,f);&nbsp;<span class="comment">//&nbsp;the&nbsp;initial&nbsp;default&nbsp;value&nbsp;of&nbsp;c,&nbsp;i,&nbsp;and&nbsp;f&nbsp;will&nbsp;be&nbsp;printed.&nbsp;</span>&nbsp;&nbsp;</p>
+<p>}&nbsp;&nbsp;</p>
+</div>
+</div>
+<p><strong>Output:</strong></p>
+<div class="codeblock3">
+<pre>0 0 0.000000 (null)
+</pre>
+</div>
+<h4 class="h4">Example 2</h4>
+<div class="codeblock">
+<div class="dp-highlighter">
+<div class="bar">&nbsp;</div>
+<p><span class="preprocessor">#include&lt;stdio.h&gt;</span>&nbsp;&nbsp;</p>
+<p><span class="keyword">void</span>&nbsp;sum()&nbsp;&nbsp;</p>
+<p>{&nbsp;&nbsp;</p>
+<p style="padding-left: 30px;"><span class="keyword">static</span>&nbsp;<span class="datatypes">int</span>&nbsp;a&nbsp;=&nbsp;10;&nbsp;&nbsp;</p>
+<p style="padding-left: 30px;"><span class="keyword">static</span>&nbsp;<span class="datatypes">int</span>&nbsp;b&nbsp;=&nbsp;24;&nbsp;&nbsp;&nbsp;</p>
+<p style="padding-left: 30px;">printf(<span class="string">"%d&nbsp;%d&nbsp;\n"</span>,a,b);&nbsp;&nbsp;</p>
+<p style="padding-left: 30px;">a++;&nbsp;&nbsp;&nbsp;</p>
+<p style="padding-left: 30px;">b++;&nbsp;&nbsp;</p>
+<p>}&nbsp;&nbsp;</p>
+<p><span class="keyword">void</span>&nbsp;main()&nbsp;&nbsp;</p>
+<p>{&nbsp;&nbsp;</p>
+<p><span class="datatypes">int</span>&nbsp;i;&nbsp;&nbsp;</p>
+<p><span class="keyword">for</span>(i&nbsp;=&nbsp;0;&nbsp;i&lt;&nbsp;3;&nbsp;i++)&nbsp;&nbsp;</p>
+<p>{&nbsp;&nbsp;</p>
+<p style="padding-left: 30px;">sum();&nbsp;<span class="comment">//&nbsp;The&nbsp;static&nbsp;variables&nbsp;holds&nbsp;their&nbsp;value&nbsp;between&nbsp;multiple&nbsp;function&nbsp;calls.&nbsp;&nbsp;</span>&nbsp;&nbsp;</p>
+<p>}&nbsp;&nbsp;</p>
+<p>}&nbsp;&nbsp;</p>
+</div>
+</div>
+<p><strong>Output:</strong></p>
+<div class="codeblock3">
+<pre>10 24 
+11 25 
+12 26 
+</pre>
+</div>
+<h2 class="h2" id="register" >Register</h2><a href="#TOP">TOP</a>
+<ol class="points">
+<li>The variables defined as the register is allocated the memory into the CPU registers depending upon the size of the memory remaining in the CPU.</li><br>
+<li>We can not dereference the register variables, i.e., we can not use &amp;operator for the register variable.</li><br>
+<li>The access time of the register variables is faster than the automatic variables.</li><br>
+<li>The initial default value of the register local variables is 0.</li><br>
+<li>The register keyword is used for the variable which should be stored in the CPU register. However, it is compiler?s choice whether or not; the variables can be stored in the register.</li><br>
+<li>We can store pointers into the register, i.e., a register can store the address of a variable.</li><br>
+<li>Static variables can not be stored into the register since we can not use more than one storage specifier for the same variable.</li><br>
+</ol>
+<h4 class="h4">Example 1</h4>
+<div class="codeblock">
+<div class="dp-highlighter">
+<div class="bar">&nbsp;</div>
+<p><span class="preprocessor">#include&nbsp;&lt;stdio.h&gt;</span>&nbsp;&nbsp;</p>
+<p><span class="datatypes">int</span>&nbsp;main()&nbsp;&nbsp;</p>
+<p>{&nbsp;&nbsp;</p>
+<p style="padding-left: 30px;"><span class="keyword">register</span>&nbsp;<span class="datatypes">int</span>&nbsp;a;&nbsp;<span class="comment">//&nbsp;variable&nbsp;a&nbsp;is&nbsp;allocated&nbsp;memory&nbsp;in&nbsp;the&nbsp;CPU&nbsp;register.&nbsp;The&nbsp;initial&nbsp;default&nbsp;value&nbsp;of&nbsp;a&nbsp;is&nbsp;0.&nbsp;</span>&nbsp;&nbsp;</p>
+<p style="padding-left: 30px;">printf(<span class="string">"%d"</span>,a);&nbsp;&nbsp;</p>
+<p>}&nbsp;&nbsp;</p>
+</div>
+</div>
+<p><strong>Output:</strong></p>
+<div class="codeblock3">
+<pre>0
+</pre>
+</div>
+<h4 class="h4">Example 2</h4>
+<div class="codeblock">
+<div class="dp-highlighter">
+<div class="bar">&nbsp;</div>
+<p><span class="preprocessor">#include&nbsp;&lt;stdio.h&gt;</span>&nbsp;&nbsp;</p>
+<p><span class="datatypes">int</span>&nbsp;main()&nbsp;&nbsp;</p>
+<p>{&nbsp;&nbsp;</p>
+<p style="padding-left: 30px;"><span class="keyword">register</span>&nbsp;<span class="datatypes">int</span>&nbsp;a&nbsp;=&nbsp;0;&nbsp;&nbsp;&nbsp;</p>
+<p style="padding-left: 30px;">printf(<span class="string">"%u"</span>,&amp;a);&nbsp;<span class="comment">//&nbsp;This&nbsp;will&nbsp;give&nbsp;a&nbsp;compile&nbsp;time&nbsp;error&nbsp;since&nbsp;we&nbsp;can&nbsp;not&nbsp;access&nbsp;the&nbsp;address&nbsp;of&nbsp;a&nbsp;register&nbsp;variable.&nbsp;</span>&nbsp;&nbsp;</p>
+<p>}&nbsp;&nbsp;</p>
+</div>
+</div>
+<p><strong>Output:</strong></p>
+<div class="codeblock3">
+<pre>main.c:5:5: error: address of register variable ?a? requested
+printf("%u",&amp;a);
+^~~~~~</pre>
+</div>
+
+
+
+
+
+
+
+<h2 class="h2"id="automatic">Automatic</h2><a href="#TOP">TOP</a>
+<ol class="points">
+<li>Automatic variables are allocated memory automatically at runtime.</li><br>
+<li>The visibility of the automatic variables is limited to the block in which they are defined.</li><br>
+<li>The scope of the automatic variables is limited to the block in which they are defined.</li><br>
+<li>The automatic variables are initialized to garbage by default.</li><br>
+<li>The memory assigned to automatic variables gets freed upon exiting from the block.</li>
+<li>The keyword used for defining automatic variables is auto.</li><br>
+<li>Every local variable is automatic in C by default.</li><br><span>
+</ol>
+</span>
+<h3><strong>Example</strong></h3>
+<div class="codeblock">
+<div class="dp-highlighter">
+<p><span class="preprocessor">#include&nbsp;&lt;stdio.h&gt;</span>&nbsp;&nbsp;</p>
+<p><span class="datatypes">int</span>&nbsp;main()&nbsp;&nbsp;</p>
+<p>{&nbsp;&nbsp;</p>
+<p><span class="datatypes">int</span>&nbsp;a&nbsp;=&nbsp;10,i;&nbsp;&nbsp;&nbsp;</p>
+<p>printf(<span class="string">"%d&nbsp;"</span>,++a);&nbsp;&nbsp;</p>
+<p>{&nbsp;&nbsp;</p>
+<p><span class="datatypes">int</span>&nbsp;a&nbsp;=&nbsp;20;&nbsp;&nbsp;&nbsp;</p>
+<p><span class="keyword">for</span>&nbsp;(i=0;i&lt;3;i++)&nbsp;&nbsp;</p>
+<p>{&nbsp;&nbsp;</p>
+<p>printf(<span class="string">"%d&nbsp;"</span>,a);&nbsp;<span class="comment">//&nbsp;20&nbsp;will&nbsp;be&nbsp;printed&nbsp;3&nbsp;times&nbsp;since&nbsp;it&nbsp;is&nbsp;the&nbsp;local&nbsp;value&nbsp;of&nbsp;a</span>&nbsp;&nbsp;</p>
+<p>}&nbsp;&nbsp;</p>
+<p>}&nbsp;&nbsp;</p>
+<p>printf(<span class="string">"%d&nbsp;"</span>,a);&nbsp;<span class="comment">//&nbsp;11&nbsp;will&nbsp;be&nbsp;printed&nbsp;since&nbsp;the&nbsp;scope&nbsp;of&nbsp;a&nbsp;=&nbsp;20&nbsp;is&nbsp;ended.&nbsp;</span>&nbsp;&nbsp;</p>
+<p>}&nbsp;&nbsp;</p>
+</div>
+</div>
+<p><strong>Output:</strong></p>
+<div class="codeblock3">
+<pre>  11 20 20 20 11</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+ 
+  </script>
+</body>
+</html>

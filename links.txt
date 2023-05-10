@@ -1,0 +1,55 @@
+linux build environment
+https://opensource.com/article/18/6/embedded-linux-build-tools
+
+
+
+
+
+
+linux commands links
+https://www.youtube.com/watch?v=ZtqBQ68cfJc&t=3059s
+
+
+
+
+
+Data stuctures with c/c++
+https://www.youtube.com/watch?v=B31LgI4Y4DQ
+https://www.youtube.com/watch?v=zuegQmMdy8M&t=1694s
+function like Macro
+https://gcc.gnu.org/onlinedocs/cpp/Function-like-Macros.html
+Malloc implemantation
+https://manybutfinite.com/post/how-the-kernel-manages-your-memory/
+https://medium.com/@andrestc/implementing-malloc-and-free-ba7e7704a473
+Libary Functions
+https://www.javatpoint.com/malloc-in-c
+
+
+
+
+
+Git/Git hub links
+https://docs.github.com/en
+
+https://www.freecodecamp.org/news/git-cheat-sheet/
+
+
+
+
+Makefile links
+
+https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html
+
+
+
+
+
+Beagle bone black links
+
+
+
+
+
+
+
+

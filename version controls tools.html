@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Website</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: rgb(87, 195, 202);
+      padding-left: 10px;
+    }
+
+    h1 {
+      margin-top: 0px;
+    }
+
+    h2 {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+
+    /* Style the header */
+    .header {
+
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Style the top navigation bar */
+
+
+    /* Style the topnav links */
+
+
+    /* Change color on hover */
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #0f88e4;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a,
+    .dropbtn {
+      display: inline-block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+     .ref_doc {
+      display: inline-block;
+      /*background-color:rgb(5, 16, 19);*/
+      color: whitesmoke;
+      text-align: center;
+      padding: 0px 0px;
+      text-decoration: none;
+    }
+    li a:hover,
+    .dropdown:hover .dropbtn {
+      background-color: rgb(8, 59, 55);
+    }
+
+    li.dropdown {
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(34, 212, 168, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #aeebdd;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    #panel1,
+    .flip {
+      font-size: 16px;
+      padding: 10px;
+      text-align: center;
+      background-color: #4CAF50;
+      color: white;
+      border: solid 1px #a6d8a8;
+      margin: auto;
+    }
+
+    #panel1 {
+      display: none;
+    }
+
+    #panel2,
+    .flip {
+      font-size: 16px;
+      padding: 10px;
+      text-align: center;
+      background-color: #4CAF50;
+      color: white;
+      border: solid 1px #a6d8a8;
+      margin: auto;
+    }
+
+    #panel2 {
+      display: none;
+    }
+
+    #panel,
+    .flip {
+      font-size: 16px;
+      padding: 10px;
+      text-align: center;
+      background-color: #4CAF50;
+      color: white;
+      border: solid 1px #a6d8a8;
+      margin: auto;
+    }
+
+    #panel {
+      display: none;
+    }
+
+    /* Create three unequal columns that floats next to each other */
+    .column {
+      float: left;
+      padding: 10px;
+    }
+
+    /* Left and right column */
+    .column.side {
+      width: 25%;
+    }
+
+    /* Middle column */
+    .column.middle {
+      width: 50%;
+    }
+
+    /* Clear floats after the columns */
+    .row::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+
+      .column.side,
+      .column.middle {
+        width: 100%;
+      }
+    }
+
+    /* Style the footer */
+    .footer {
+
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  
+
+  <div class="header">
+    <h1>Git / Git Hub</h1>
+    <img src="My_Photo.jpg" style="max-width:100%;height:auto;">
+    <h2>Top 15 Version Control Software Tools</h2>
+  </div>
+
+
+  <ul>
+    <li><a href="./index.html">Home</a></li>
+    <li><a href="#news">News</a></li>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Git/Git Hub</a>
+      <div class="dropdown-content">
+       <a href="./Git_commands.html" >Git commands</a>
+        <a href="./Git cheat sheet.pdf" target="_blank">Git Cheat sheet</a>
+        <a href="./Github cheat sheet.pdf" target="_blank">Github Cheat sheet</a>
+        <a href="https://github.com/githubtraining/training-manual.git"target="_blank">github training source </a>
+        <a href="https://docs.github.com/en/"target="_blank">github Docs </a>
+        <a href="./version controls tools.html" >About version controls tools </a>
+        
+      </div>
+    </li>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
+      <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+    </li>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
+      <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+    </li>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
+      <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+    </li>
+  </ul>
+
+  <p>
+  <h1 style="font-size:5vw;">Top 15 Version Control Software Tools
+  <a href="https://www.softwaretestinghelp.com/version-control-software/" target="_blank">(link)</a></h1>
+  </p>
+  <ol>
+    <li>
+      <strong><a class="ref_doc" href="#Git">Git</a></strong>      
+    </li><br><br>
+    <li>
+      <strong><a class="ref_doc" href="#CVS">CVS</a></strong>      
+    </li><br><br>
+    <li>
+      <strong><a class="ref_doc" href="#SVN">SVN</a></strong>      
+    </li><br><br>
+    <li>
+      <strong><a class="ref_doc" href="#Mercurial">Mercurial</a></strong>      
+    </li><br><br>
+    <li>
+      <strong><a class="ref_doc" href="#Monotone">Monotone</a></strong>      
+    </li><br><br>
+    <li>
+      <strong><a class="ref_doc" href="#Bazaar">Bazaar</a></strong>      
+    </li><br><br>
+    <li>
+      <strong><a class="ref_doc" href="#TFS">TFS</a></strong>      
+    </li><br><br>
+    <li>
+      <strong><a class="ref_doc" href="#VSTS">VSTS</a></strong>      
+    </li><br><br>
+    <li>
+      <strong><a class="ref_doc" href="#Perforce Helix Core">Perforce Helix Core</a></strong>      
+    </li><br><br>
+    <li>
+      <strong><a class="ref_doc" href="#IBM Rational ClearCase">IBM Rational ClearCase</a></strong>      
+    </li><br><br>
+    <li>
+      <strong><a class="ref_doc" href="#Revision Control System">Revision Control System</a></strong>      
+    </li><br><br>
+    <li>
+      <strong><a class="ref_doc" href="#Visual SourceSafe">Visual SourceSafe(VSS)</a></strong>      
+    </li><br><br>
+    <li>
+      <strong><a class="ref_doc" href="#CA Harvest Software Change Manager">CA Harvest Software Change Manager</a></strong>      
+    </li><br><br>
+    <li>
+      <strong><a class="ref_doc" href="#PVCS">PVCS</a></strong>      
+    </li><br><br>
+    <li>
+      <strong><a class="ref_doc" href="#darcs">darcs</a></strong>      
+    </li><br><br>
+  </ol>
+  <br />
+  
+  <p id="Git">
+    <h2>Git <a href="https://git-scm.com/" target="_blank">(Link)</a></h2>
+
+		<p>Git is one of the best version control tools that is available in the present market.
+			<br/>
+			<br/>
+    <strong>Features</strong>
+    <ol>
+
+      <li>Provides strong support for non-linear development.</li>
+			<br/>
+      <li>Distributed repository model.</li>
+			<br/>
+      <li>Compatible with existing systems and protocols like HTTP, FTP, ssh.</li>
+			<br/>
+      <li>Capable of efficiently handling small to large sized projects.</li>
+			<br/>
+      <li>Cryptographic authentication of history.</li>
+			<br/>
+      <li>Pluggable merge strategies.</li>
+			<br/>
+      <li>Toolkit-based design.</li>
+			<br/>
+      <li>Periodic explicit object packing.</li>
+			<br/>
+      <li>Garbage accumulates until collected.
+			<br/>
+    </li><br><br>
+  </ol>
+    <strong>Pros</strong>
+    <ol>
+      <li>Super-fast and efficient performance.</li>
+			<br/>
+      <li>Cross-platform</li>
+			<br/>
+      <li>Code changes can be very easily and clearly tracked.</li>
+			<br/>
+      <li>Easily maintainable and robust.</li>
+			<br/>
+      <li>Offers an amazing command line utility known as git bash.</li>
+			<br/>
+      <li>Also offers GIT GUI where you can very quickly re-scan, state change, sign off, commit & push the code quickly with just a few clicks.</li>
+			<br/></ol>
+    <strong>Cons</strong>
+    <ol>
+      <li>Complex and bigger history log become difficult to understand.</li>
+			<br/>
+      <li>Does not support keyword expansion and timestamp preservation.</li>
+			<br/> <br/> <br/></ol>
+    <strong>Open Source: Yes</strong>
+			<br/>
+			<br/>
+    <strong>Cost: Free</strong>
+
+		</p>
+  </p>
+  <br />
+  <p id="CVS"><h2>CVS <a href="http://savannah.nongnu.org/projects/cvs" target="_blank">(Link)</a></h2>
+    <p>It is yet another most popular revision control system. CVS has been the tool of choice for a long time.
+			<br/>
+			<br/>
+      <strong>Features</strong>
+<ol>
+      <li>Client-server repository model.</li>
+			<br/>
+      <li>Multiple developers might work on the same project parallelly.</li>
+			<br/>
+      <li>CVS client will keep the working copy of the file up-to-date and requires manual intervention only when an edit conflict occurs
+			</li><br/>
+      <li>Keeps a historical snapshot of the project.
+			</li><br/>
+      <li>Anonymous read access.
+			</li><br/>
+      <li>‘Update’ command to keep local copies up to date.
+			</li><br/>
+      <li>Can uphold different branches of a project.
+			</li><br/>
+      <li>Excludes symbolic links to avoid a security risk.
+			</li><br/>
+      <li>Uses delta compression technique for efficient storage.
+			</li><br/>
+    </ol>
+      <strong>Pros</strong>
+	<ol>
+      <li>Excellent cross-platform support.
+			</li><br/>
+      <li>Robust and fully-featured command-line client permits powerful scripting
+			</li><br/>
+      <li>Helpful support from vast CVS community
+			</li><br/>
+      <li>allows good web browsing of the source code repository
+			</li><br/>
+      <li>It’s a very old, well known & understood tool.
+			</li><br/>
+      <li>Suits the collaborative nature of the open-source world splendidly.
+			</li><br/></ol>
+      <br>
+      <strong>Cons</strong>
+<ol>
+			
+      <li>No integrity checking for source code repository.
+			</li><br/>
+      <li>Does not support atomic check-outs and commits.
+			</li><br/>
+      <li>Poor support for distributed source control.
+			</li><br/>
+      <li>Does not support signed revisions and merge tracking.
+			</li><br/></ol>
+      <strong>Open Source: Yes
+			</li><br/>
+			<br/>
+      <strong>Cost: Free</strong>
+		</p>
+
+
+
+  </p>
+  <br />
+  <p id="SVN"></p>
+  <br />
+  <p id="Mercurial"></p>
+  <br />
+  <p id="Monotone"></p>
+  <br />
+  <p id="Bazaar"></p>
+  <br />
+  <p id="TFS"></p>
+  <br />
+  <p id="VSTS"></p>
+  <br />
+  <p id="Perforce Helix Core"></p>
+  <br />
+  <p id="IBM Rational ClearCase"></p>
+  <br />
+  <p id="Revision Control System"></p>
+  <br />
+  <p id="Visual SourceSafe"></p>
+  <br />
+  <p id="CA Harvest Software Change Manager"></p>
+  <br />
+  <p id="PVCS"></p>
+  <br />
+  <p id="darcs"></p>
+  <br />
+
+
+  Conclusion
+  <br />
+  Recommended Reading
+  </p>
+  <p id="Perforce Helix Core"></p>
+  <p id="PVCS" >PVCS (an acronym for <strong>Polytron Version Control System</strong> ), developed by Serena Software is a
+    client-server repository
+    model based version control tool. It supports Windows and Unix-like platforms. It provides version control of source
+    code files. It is mainly intended for small development teams.
+    <br />
+    <br />
+    <strong>Features</strong>
+    <br />
+    <br />
+    Follows locking approach to concurrency control.
+    <br />
+    No built-in merge opera.tor but has a separate merge command.
+    <br />
+    Supports multi-user environment.
+    <br />
+    <br />
+    Pros
+    <br />
+    <br />
+    Easy to learn and use
+    <br />
+    Manages the file versions regardless of the platforms.
+    <br />
+    Gets easily integrated with Microsoft Visual Studio .NET and Eclipse IDEs.
+    <br />
+    Cons
+    <br />
+    <br />
+    Its GUI has some quirks.
+    <br />
+    Open Source: No, it is a proprietary software.
+    <br />
+    <br />
+    Cost: Not disclosed by the vendor.
+  </p>
+
+
+
+
+
+
+
+
+ 
+   
+    
+
+
+
+
+
+
+
+
+  
+
+  <script>
+   
+  </script>
+</body>
+
+</html>
