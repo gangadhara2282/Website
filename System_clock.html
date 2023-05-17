@@ -191,14 +191,14 @@
   
 
   <div class="header">
-    <h1>Beagle Bone Black</h1>
+    <h1>STM32F411RE</h1>
     <img src="My_Photo.jpg" style="max-width:100%;height:auto;">
     <h2>Main Page</h2>
   </div>
 
 
   <ul>
-    <li><a href="./index.html">Home</a></li>
+    <li><a href="#home">Home</a></li>
     <li><a href="#news">News</a></li>
     <li class="dropdown">
       <a href="javascript:void(0)" class="dropbtn">Git/GitHub</a>
@@ -226,18 +226,59 @@
       </div>
     </li>
     <li class="dropdown">
-      <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
+      <a href="javascript:void(0)" class="dropbtn">STM32</a>
       <div class="dropdown-content">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
+        <a href="./STM32_index.html">STM32_MainPage</a>
+        <a href="./System_clock.html">System_clock</a>
         <a href="#">Link 3</a>
       </div>
     </li>
   </ul>
 
   <p>
-  <h1 style="font-size:3vw;">Minicom settings
-  <a href="./BBB_minicom.html" target="_blank">(link)</a></h1>
+ 
+<DIV>
+  <h1>HSI (High-speed Internal) RC Oscillator</h1>
+  <ol>
+  <li>The <mark> HSI </mark> is used (enabled by hardware) as system clock source after startup from reset,
+    wake-up from STOP and STANDBY mode, or in case of failure of the HSE used directly or indrectly s system clock.</li><br>
+    <li>The HSI RC oscillator has the advantage of providing a clock source at loe cost (no external components).</li><br>
+    <li>It also has a faster startup(2usec) time than the HSE crystal oscillator.</li><br>
+    <li>However even with calibration the frequency is less accurate than an external crystal osillator or ceramic resonator.</li><br>
+    <li>The HSI signal can also be used as a backup source (auxiliary clock) if the HSE crystal oscillator fails.</li><br>
+</ol>
+</DIV>
+<DIV><br>
+  <h2>STM32 HAL RCC Diver</h2>
+  source files:STM32f4xx_hal_rcc.c   STM32f4xx_hal_rcc_ex.c <br>
+  Header Files:STM32f4xx_hal_rcc.h   STM32f4xx_hal_rcc_ex.h <br>
+  <h2>STM32 Cube Clock handling API</h2>
+
+<h2>HSI calibration</h2>
+The operating temperature has an impact on the accuracy of the RC oscillator.At 25decC, the HSI oscillator
+have an accuracy of +/- 1% typically,but in the temperature range okf -40 degC to 105 degC the accuracy decreases.<br>
+To compensate for the influence of temperature in the application the O/P frequency of the HSI oscillator can be further trimmed by the user 
+runtime calibration routine to improve the HSI frequency accuracy.This may rove crucial for communication peripherals.<br>
+ <h2>HSI calibration adjustment</h2>
+
+ <h1>Timers</h1>
+<h4>What exactly is timer?</h4> 
+    --its one of peripheral of the microcontroller.<br>
+ <h4>What are the uses of a timer?</h4>
+   --Time base generation<br>
+   --Mesureing/counting input siganal frequency (measureing time periods of waveforms ) <br>  
+   --Producing different waveforms <br>
+   --Mesuring pulse width <br>
+   --Genarating pulse width modulation (PWM) signals<br>
+   --triggering external devices <br>
+  <h4>What does a timer do ?</h4>
+  --A timer at the basic level just couts from 0  to some pre-programmed value (up counting ) or from some pre progrmmed 
+    value to zero(doen count) <br>
+    <h4>Types of STM32 timer</h4>
+    --basic timer<br>
+    --General purpose timer<br>
+    --Advanced timer<br>
+</DIV>
   </p>
   
   <script>
