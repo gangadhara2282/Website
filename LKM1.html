@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 7.4.4.2 (Linux)"/>
+	<meta name="created" content="2023-06-06T18:42:19.936383095"/>
+	<meta name="changed" content="2023-06-06T22:58:07.285113700"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { line-height: 115%; margin-bottom: 0.1in; background: transparent }
+		h2 { margin-top: 0.14in; margin-bottom: 0.08in; background: transparent; page-break-after: avoid }
+		h2.western { font-family: "Liberation Serif", serif; font-size: 18pt; font-weight: bold }
+		h2.cjk { font-family: "Noto Sans CJK SC"; font-size: 18pt; font-weight: bold }
+		h2.ctl { font-family: "Lohit Devanagari"; font-size: 18pt; font-weight: bold }
+		h3 { margin-top: 0.1in; margin-bottom: 0.08in; background: transparent; page-break-after: avoid }
+		h3.western { font-family: "Liberation Serif", serif; font-size: 14pt; font-weight: bold }
+		h3.cjk { font-family: "Noto Sans CJK SC"; font-size: 14pt; font-weight: bold }
+		h3.ctl { font-family: "Lohit Devanagari"; font-size: 14pt; font-weight: bold }
+		strong { font-weight: bold }
+		code.western { font-family: "Liberation Mono", monospace }
+		code.cjk { font-family: "DejaVu Sans Mono", monospace }
+		code.ctl { font-family: "Liberation Mono", monospace }
+		em { font-style: italic }
+		a:link { color: #000080; so-language: zxx; text-decoration: underline }
+		tt.western { font-family: "Liberation Mono", monospace }
+		tt.cjk { font-family: "DejaVu Sans Mono", monospace }
+		tt.ctl { font-family: "Liberation Mono", monospace }
+	</style>
+</head>
+<body lang="en-IN" link="#000080" vlink="#800000" dir="ltr"><h2 class="western" style="font-variant: normal; letter-spacing: normal; font-style: normal">
+<br/>
+<br/>
+
+</h2>
+<p><font face="areial">https://embetronicx.com/tutorials/linux/device-drivers/linux-device-driver-tutorial-part-2-first-device-driver/</font></p>
+<h2 class="western" style="font-variant: normal; letter-spacing: normal; font-style: normal">
+<font color="#ff0040"><font face="areial"><font size="6" style="font-size: 22pt"><b>First
+Linux Device Driver</b></font></font></font></h2>
+<h2 lang="zxx" class="western" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2; margin-top: 0in; margin-bottom: 0.21in; border: none; padding: 0in"><a name="Module_Information"></a>
+<font color="#ff0040"><font face="areial"><font size="6" style="font-size: 22pt"><b>Module
+Information</b></font></font></font></h2>
+<ul>
+	<li><p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+	<font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt">License</font></font></font></p>
+	<li><p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+	<font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt">Author</font></font></font></p>
+	<li><p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+	<font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt">Module
+	Description</font></font></font></p>
+	<li><p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+	<font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt">Module
+	Version</font></font></font></p>
+</ul>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<span style="font-variant: normal"><font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">These
+pieces of information are present in the </span></span></span></span></font></font></font></span><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="areial"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>Linux/module.h
+</b></span></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">as
+macros.</span></span></span></span></font></font></font></span></p>
+<h3 lang="zxx" class="western" style="font-variant: normal; letter-spacing: normal; font-style: normal">
+<font color="#ff0040"><font face="areial"><font size="4" style="font-size: 15pt"><b>License</b></font></font></font></h3>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<span style="font-variant: normal"><font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">GPL,
+or the GNU General Public License, is an open-source license meant
+for software. If your software is licensed under the terms of the
+GPL, it is free. However, “free” here does not essentially mean
+freeware—it can also be paid software. Instead, “free” as per
+the GPL means freedom. As proponents of GPL proudly proclaim,&nbsp;</span></span></span></span></font></font></font></span><em><span style="font-variant: normal"><font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><i><span style="font-weight: normal">free
+as in freedom, not free beer.</span></i></span></span></font></font></font></span></em></p>
+<p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt">The
+following license idents are currently accepted as indicating free
+software modules.</font></font></font></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<code class="western"><span style="font-variant: normal"><font color="#196619"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>&quot;GPL&quot;
+[GNU Public License v2 or later]</b></span></span></span></font></font></font></span></code></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<code class="western"><span style="font-variant: normal"><font color="#196619"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>&quot;GPL
+v2&quot; [GNU Public License v2]</b></span></span></span></font></font></font></span></code></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<code class="western"><span style="font-variant: normal"><font color="#196619"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>&quot;GPL
+and additional rights&quot; [GNU Public License v2 rights and more]</b></span></span></span></font></font></font></span></code></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<code class="western"><span style="font-variant: normal"><font color="#196619"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>&quot;Dual
+BSD/GPL&quot; [GNU Public License v2 or BSD license choice]</b></span></span></span></font></font></font></span></code></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<code class="western"><span style="font-variant: normal"><font color="#196619"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>&quot;Dual
+MIT/GPL&quot; [GNU Public License v2 or MIT license choice]</b></span></span></span></font></font></font></span></code></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<code class="western"><span style="font-variant: normal"><font color="#196619"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>&quot;Dual
+MPL/GPL&quot; [GNU Public License v2 or Mozilla license choice]</b></span></span></span></font></font></font></span></code></p>
+<p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt">The
+following other idents are available</font></font></font></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<code class="western"><span style="font-variant: normal"><font color="#196619"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>&quot;Proprietary&quot;
+[Non free products]</b></span></span></span></font></font></font></span></code></p>
+<p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt">There
+are dual-licensed components, but when running with Linux it is the
+GPL that is relevant so this is a non-issue. Similarly, LGPL linked
+with GPL is a GPL combined work.</font></font></font></p>
+<p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt">This
+exists for several reasons,</font></font></font></p>
+<ul>
+	<li><p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+	<strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>modinfo</b></span></span></span></font></font></font></span></code></strong><strong><span style="font-variant: normal"><font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>
+	</b></span></span></span></font></font></font></span></strong><span style="font-variant: normal"><font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">can
+	show license info for users wanting to vet their setup is free</span></span></span></span></font></font></font></span></p>
+	<li><p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+	<font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt">The
+	community can ignore bug reports including proprietary modules</font></font></font></p>
+	<li><p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; border: none; padding: 0in">
+	<font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt">Vendors
+	can do likewise based on their own policies</font></font></font></p>
+</ul>
+<p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt">We
+can give the License for our Linux device driver (module) like below.
+For this, you need to include the Linux/module.h header file.</font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<br/>
+
+</p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="areial"><font size="1" style="font-size: 8pt"><b><font color="#820f71">MODULE_LICENSE(&quot;GPL&quot;);</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="areial"><font size="1" style="font-size: 8pt"><b><span style="background: #fff200"><font color="#820f71">MODULE_LICENSE(&quot;GPL
+v2&quot;);</span></span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="areial"><font size="1" style="font-size: 8pt"><b><font color="#820f71">MODULE_LICENSE(&quot;Dual
+BSD/GPL&quot;);</span></b></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p align="justify" style="line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<em><font color="#000000"><font face="areial"><font size="4" style="font-size: 14pt"><span style="letter-spacing: normal"><i><span style="font-weight: normal">Note:
+It is not strictly necessary, but your module really should specify
+which license applies to its code.</span></i></span></font></font></font></em></p>
+<p align="justify" style="line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<br/>
+
+</p>
+<h3 class="western" align="justify" style="orphans: 2; widows: 2"><em><span style="font-variant: normal"><font color="#ff0040"><font face="areial"><font size="4" style="font-size: 15pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>Author</b></span></span></span></font></font></font></span></em></h3>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<span style="font-variant: normal"><font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">Using
+this Macro we can mention who is writing this Linux device driver or
+module. So </span></span></span></span></font></font></font></span><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="areial"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>modinfo</b></span></span></span></font></font></font></span></code></strong><strong><span style="font-variant: normal"><font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>
+</b></span></span></span></font></font></font></span></strong><span style="font-variant: normal"><font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">can
+show the author’s name for users wanting to know. We can give the
+Author’s name for our driver (module) like below. For this, you
+need to include the </span></span></span></span></font></font></font></span><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="areial"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>Linux/module.h
+</b></span></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">header
+file.</span></span></span></span></font></font></font></span></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2">
+<span style="display: inline-block; border: none; padding: 0in"><font face="areial"><font size="1" style="font-size: 8pt"><b><span style="background: #fff200"><font color="#820f71">MODULE_AUTHOR(&quot;Author&quot;);</span></span></b></font></font></font></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<span style="font-variant: normal"><font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">Note:
+Use “Name &lt;email&gt;” or just “Name”, for multiple authors
+use multiple </span></span></span></span></font></font></font></span><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="areial"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>MODULE_AUTHOR()
+</b></span></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">statements/lines.</span></span></span></span></font></font></font></span></p>
+<h2 lang="zxx" class="western" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2; margin-top: 0in; margin-bottom: 0.21in; border: none; padding: 0in"><a name="Module_Description"></a>
+<font color="#ff0040"><font face="areial"><font size="6" style="font-size: 22pt"><b>Module
+Description</b></font></font></font></h2>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<span style="font-variant: normal"><font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">Using
+this Macro we can give a description of the module or Linux device
+driver. So </span></span></span></span></font></font></font></span><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="areial"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>modinfo</b></span></span></span></font></font></font></span></code></strong><strong><span style="font-variant: normal"><font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>
+</b></span></span></span></font></font></font></span></strong><span style="font-variant: normal"><font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">can
+show a module description for users wanting to know. We can give the
+description for our driver (module) like below. For this, you need to
+include the </span></span></span></span></font></font></font></span><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="areial"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>Linux/module.h
+</b></span></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">header
+file.</span></span></span></span></font></font></font></span></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2">
+<span style="display: inline-block; border: none; padding: 0in"><font face="areial"><font size="1" style="font-size: 8pt"><b><span style="background: #fff200"><font color="#820f71">MODULE_DESCRIPTION(&quot;A
+sample driver&quot;);</span></span></b></font></font></font></p>
+<h2 lang="zxx" class="western" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2; margin-top: 0in; margin-bottom: 0.21in; border: none; padding: 0in"><a name="Module_Version"></a>
+<font color="#ff0040"><font face="areial"><font size="6" style="font-size: 22pt"><b>Module
+Version</b></font></font></font></h2>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<span style="font-variant: normal"><font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">Using
+this Macro we can give the version of the module or driver. So,
+</span></span></span></span></font></font></font></span><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="areial"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>modinfo</b></span></span></span></font></font></font></span></code></strong><strong><span style="font-variant: normal"><font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>
+</b></span></span></span></font></font></font></span></strong><span style="font-variant: normal"><font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">can
+show the module version for users wanting to know.</span></span></span></span></font></font></font></span></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<code class="western"><span style="font-variant: normal"><font color="#196619"><font face="areial"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>Version
+of form [&lt;epoch&gt;:]&lt;version&gt;[-&lt;extra-version&gt;].</b></span></span></span></font></font></font></span></code></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="areial"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>&lt;epoch&gt;</b></span></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="areial"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">:
+A (small) unsigned integer which allows you to start versions anew.
+If not mentioned, it’s zero. eg. “2:1.0” is after “1:2.0”.</span></span></span></span></font></font></font></span></p>
+<p align="justify" style="orphans: 2; widows: 2"><em><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>&lt;version&gt;</b></span></span></span></font></font></font></span></code></strong></em><em><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">:
+The &lt;version&gt; may contain only alphanumerics and the character
+`.’. Ordered by numeric sort for numeric parts, ASCII sort for
+ASCII parts (as per RPM or DEB algorithm).</span></span></span></span></font></font></font></span></em></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>&lt;extraversion&gt;</b></span></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">:
+Like &lt;version&gt;, but inserted for local customizations, eg “rh3”
+or “rusty1”.</span></span></span></span></font></font></font></span></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<strong><span style="font-variant: normal"><font color="#820f71"><font face="Arial, Helvetica, sans-serif"><font size="2" style="font-size: 10pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b><span style="background: #fff200">Example</span></b></span></span></span></font></font></font></span></strong></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><span style="background: #fff200"><font color="#820f71">MODULE_VERSION(&quot;2:1.0&quot;);</span></span></b></font></font></font></p>
+<h2 lang="zxx" class="western" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2; margin-top: 0in; margin-bottom: 0.21in; border: none; padding: 0in"><a name="Simple_Kernel_Module_Programming"></a>
+<font color="#ff0040"><font face="Arial, Helvetica, sans-serif"><font size="6" style="font-size: 22pt"><b>Simple
+Kernel Module Programming</b></font></font></font></h2>
+<p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt">So
+as of now, we know the very basic things that are needed for writing
+the Linux device drivers. Now we will move into programming. In every
+programming language, how we will start to write the code? Any ideas?
+Well, in all programming there would be a starting point and ending
+point. If you take C Language, the starting point would be the main
+function, Isn’t it? It will start from the start of the main
+function and run through the functions which are calling from the
+main function. Finally, it exits at the main function closing point.
+But Here two separate functions are used for the starting and ending.</font></font></font></p>
+<ol>
+	<li><p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+	<font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt">Init
+	function</font></font></font></p>
+	<li><p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+	<font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt">Exit
+	function</font></font></font></p>
+</ol>
+<p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt">Kernel
+modules require a different set of header files than user programs
+require. And keep in mind, Module code should not invoke user space
+Libraries or API or System calls.</font></font></font></p>
+<h3 lang="zxx" class="western" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2; margin-top: 0in; margin-bottom: 0.21in; border: none; padding: 0in"><a name="Init_function"></a>
+<font color="#ff0040"><font face="Arial, Helvetica, sans-serif"><font size="4" style="font-size: 15pt"><b>Init
+function</b></font></font></font></h3>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">This
+is the function that will execute first when the Linux device driver
+is loaded into the kernel. For example, when we load the driver using
+</span></span></span></span></font></font></font></span><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>insmod</b></span></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">,
+this function will execute. Please see below to know the syntax of
+this function.</span></span></span></span></font></font></font></span></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Source Code Pro, Liberation Mono, Courier New, Courier, monospace"><font size="2" style="font-size: 10pt"><b><span style="background: #fff200"><font color="#820f71"><font face="inherit">static</font>
+<font face="inherit">int</font> <font face="inherit">__init
+hello_world_init(void)</font> <font face="inherit">/* Constructor */</font></span></span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><span style="background: #fff200"><font color="#820f71">{</span></span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Source Code Pro, Liberation Mono, Courier New, Courier, monospace"><font size="2" style="font-size: 10pt"><b><span style="background: #fff200"><font color="#820f71"><font face="inherit">return</font>
+<font face="inherit">0;</font></span></span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><span style="background: #fff200"><font color="#820f71">}</span></span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><span style="background: #fff200"><font color="#820f71">module_init(hello_world_init);</span></span></b></font></font></font></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">This
+function should register itself by using </span></span></span></span></font></font></font></span><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>module_init()
+</b></span></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">macro.</span></span></span></span></font></font></font></span></p>
+<h3 lang="zxx" class="western" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2; margin-top: 0in; margin-bottom: 0.21in; border: none; padding: 0in"><a name="Exit_function"></a>
+<font color="#ff0040"><font face="Arial, Helvetica, sans-serif"><font size="4" style="font-size: 15pt"><b>Exit
+function</b></font></font></font></h3>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">This
+is the function that will execute last when the Linux device driver
+is unloaded from the kernel. For example, when we unload the driver
+using </span></span></span></span></font></font></font></span><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>rmmod</b></span></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">,
+this function will execute. Please see below to know the syntax of
+this function.</span></span></span></span></font></font></font></span></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Source Code Pro, Liberation Mono, Courier New, Courier, monospace"><font size="2" style="font-size: 10pt"><b><span style="background: #fff200"><font color="#820f71"><font face="inherit">void</font>
+<font face="inherit">__exit hello_world_exit(void)</font></span></span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><span style="background: #fff200"><font color="#820f71">{</span></span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><span style="background: #fff200"><font color="#820f71">}</span></span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><span style="background: #fff200"><font color="#820f71">module_exit(hello_world_exit);</span></span></b></font></font></font></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">This
+function should register itself by using </span></span></span></span></font></font></font></span><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>module_exit()
+</b></span></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">macro.</span></span></span></span></font></font></font></span></p>
+<h2 lang="zxx" class="western" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2; margin-top: 0in; margin-bottom: 0.21in; border: none; padding: 0in"><a name="Printk"></a>
+<font color="#ff0040"><font face="Arial, Helvetica, sans-serif"><font size="6" style="font-size: 22pt"><b>Printk()</b></font></font></font></h2>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">	In
+C programming how we will print the values or whatever? Correct.
+Using </span></span></span></span></font></font></font></span><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>printf()
+</b></span></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">function.
+</span></span></span></span></font></font></font></span><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>Printf()
+</b></span></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">is
+a user-space function. So we cant use this here. So, they have
+created another function for the kernel which is </span></span></span></span></font></font></font></span><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>printk().</b></span></span></span></font></font></font></span></code></strong></p>
+<p align="justify" style="orphans: 2; widows: 2"><em><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">	One
+of the differences is that </span></span></span></span></font></font></font></span></em><em><strong><code class="western"><a href="https://en.wikipedia.org/wiki/Printk" target="_blank">printk</a></code></strong></em><em><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><span style="text-decoration: none"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>
+</b></span></span></span></font></font></span></font></span></code></strong></em><em><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">lets
+you classify messages according to their severity by associating
+different log levels, or priorities, with the messages. You usually
+indicate the log level with a macro. I will explain about the macros
+now. There are several macros used for </span></span></span></span></font></font></font></span></em><em><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>printk</b></span></span></span></font></font></font></span></code></strong></em><em><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">.</span></span></span></span></font></font></font></span></em></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>KERN_EMERG:</b></span></span></span></font></font></font></span></strong></p>
+<p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt">	Used
+for emergency messages, usually those that precede a crash.</font></font></font></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>KERN_ALERT:</b></span></span></span></font></font></font></span></strong></p>
+<p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt">	A
+situation requiring immediate action.</font></font></font></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>KERN_CRIT:</b></span></span></span></font></font></font></span></strong></p>
+<p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt">	Critical
+conditions are often related to serious hardware or software
+failures.</font></font></font></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>KERN_ERR:</b></span></span></span></font></font></font></span></strong></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">	Used
+to report error conditions; device drivers often use&nbsp;</span></span></span></span></font></font></font></span><tt class="western"><span style="font-variant: normal"><font color="#000000"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">KERN_ERR</span></span></span></span></font></font></font></span></tt><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">&nbsp;to
+report hardware difficulties.</span></span></span></span></font></font></font></span></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>KERN_WARNING:</b></span></span></span></font></font></font></span></strong></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>	</b></span></span></span></font></font></font></span></strong><strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">Warnings
+about problematic situations that do not, in themselves, create
+serious problems with the system.</span></span></span></span></font></font></font></span></strong></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>KERN_NOTICE:</b></span></span></span></font></font></font></span></strong></p>
+<p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt">	Situations
+that are normal, but still worthy of note. A number of
+security-related conditions are reported at this level.</font></font></font></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>KERN_INFO:</b></span></span></span></font></font></font></span></strong></p>
+<p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt">	Informational
+messages. Many drivers print information about the hardware they find
+at startup time at this level.</font></font></font></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>KERN_DEBUG:</b></span></span></span></font></font></font></span></strong></p>
+<p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt">	Used
+for debugging messages.</font></font></font></p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>Example</b></span></span></span></font></font></font></span></strong></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="1" style="font-size: 8pt"><b><span style="background: #fff200"><font color="#8f187c">	printk(KERN_INFO
+&quot;Welcome To EmbeTronicX&quot;);</span></span></b></font></font></font></p>
+<h2 lang="zxx" class="western" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2; margin-top: 0in; margin-bottom: 0.21in; border: none; padding: 0in"><a name="The_difference_between_printf_and_printk"></a>
+<font color="#ff0040"><font face="Arial, Helvetica, sans-serif"><font size="6" style="font-size: 22pt"><b>The
+difference between printf and printk</b></font></font></font></h2>
+<ul>
+	<li><p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+	<strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>Printk()</b></span></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">is
+	a kernel-level function, which has the ability to print out to
+	different log levels as defined in. We can see the prints
+	using</span></span></span></span></font></font></font></span><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>dmesg</b></span></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">command.</span></span></span></span></font></font></font></span></p>
+	<li><p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+	<code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>Printf()
+	</b></span></span></span></font></font></font></span></code><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">will
+	always print to a file descriptor –STD_OUT. We can see the prints
+	in the STD_OUT console.</span></span></span></span></font></font></font></span></p>
+</ul>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">Note:
+In the newer Linux kernels, you can use the APIs below instead of
+this</span></span></span></font></font></font></span><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span style="font-style: normal"><b>printk</b></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">.</span></span></span></font></font></font></span></p>
+<ul>
+	<li><p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+	<strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span style="font-style: normal"><b>pr_info
+	</b></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">–Print
+	an info-level message. (ex.</span></span></span></font></font></font></span><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span style="font-style: normal"><b>pr_info(&quot;test
+	info message\n&quot;)</b></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">).</span></span></span></font></font></font></span></p>
+	<li><p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+	<strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span style="font-style: normal"><b>pr_cont</b></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">–Continues
+	a previous log message in the same line.</span></span></span></font></font></font></span></p>
+	<li><p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+	<strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span style="font-style: normal"><b>pr_debug</b></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">–Print
+	a debug-level message conditionally.</span></span></span></font></font></font></span></p>
+	<li><p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+	<strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span style="font-style: normal"><b>pr_err</b></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">–Print
+	an error-level message.(ex.</span></span></span></font></font></font></span><strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span style="font-style: normal"><b>pr_err(“test
+	error message\n”)</b></span></span></font></font></font></span></strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">).</span></span></span></font></font></font></span></p>
+	<li><p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+	<strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span style="font-style: normal"><b>pr_warn</b></span></span></font></font></font></span></code></strong><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">–Print
+	a warning-level message.</span></span></span></font></font></font></span></p>
+</ul>
+<h2 lang="zxx" class="western" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2; margin-top: 0in; margin-bottom: 0.21in; border: none; padding: 0in"><a name="First_Linux_Device_Driver_%E2%80%93_Simple_Linux_Device_Driver"></a>
+<font color="#ff0040"><font face="Arial, Helvetica, sans-serif"><font size="6" style="font-size: 22pt"><b>First
+Linux Device Driver – Simple Linux Device Driver</b></font></font></font></h2>
+<p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt">This
+is the complete code for our simple device driver
+(hello_world_module.c). You can download the Project By clicking the
+below link.</font></font></font></p>
+<p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">*
+\file driver.c</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">*</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">*
+\details Simple hello world driver</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><span style="background: #000000"><font color="#8f187c">*</span></span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">*
+\author EmbeTronicX</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">*</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">*
+*******************************************************************************/</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">#include&lt;linux/kernel.h&gt;</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">#include&lt;linux/init.h&gt;</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">#include&lt;linux/module.h&gt;</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">/*</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">**
+Module Init function</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">*/</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Source Code Pro, Liberation Mono, Courier New, Courier, monospace"><font size="2" style="font-size: 10pt"><b><font color="#8f187c"><font face="inherit">static</font>
+<font face="inherit">int</font> <font face="inherit">__init
+hello_world_init(void)</font></span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">{</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">printk(KERN_INFO
+&quot;Welcome to EmbeTronicX\n&quot;);</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">printk(KERN_INFO
+&quot;This is the Simple Module\n&quot;);</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">printk(KERN_INFO
+&quot;Kernel Module Inserted Successfully...\n&quot;);</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Source Code Pro, Liberation Mono, Courier New, Courier, monospace"><font size="2" style="font-size: 10pt"><b><font color="#8f187c"><font face="inherit">return</font>
+<font face="inherit">0;</font></span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">}</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">/*</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">**
+Module Exit function</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">*/</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Source Code Pro, Liberation Mono, Courier New, Courier, monospace"><font size="2" style="font-size: 10pt"><b><font color="#8f187c"><font face="inherit">static</font>
+<font face="inherit">void</font> <font face="inherit">__exit
+hello_world_exit(void)</font></span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">{</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">printk(KERN_INFO
+&quot;Kernel Module Removed Successfully...\n&quot;);</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">}</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">module_init(hello_world_init);</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">module_exit(hello_world_exit);</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">MODULE_LICENSE(&quot;GPL&quot;);</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">MODULE_AUTHOR(&quot;EmbeTronicX
+&lt;embetronicx@gmail.com&gt;&quot;);</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="2" style="font-size: 10pt"><b><font color="#8f187c">MODULE_DESCRIPTION(&quot;A
+simple hello world driver&quot;);</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="Source Code Pro, Liberation Mono, Courier New, Courier, monospace"><font size="1" style="font-size: 8pt"><font color="#000000"><font color="#8f187c"><font face="inherit"><font size="2" style="font-size: 10pt"><b>MODULE_VERSION(&quot;2:1.0&quot;</b></font></font></font><font color="#f8f8f2"><font face="inherit"><b>)</b></font></font><font color="#f8f8f2"><font face="inherit">;</font></font></span></font></font></font></p>
+<p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<br/>
+
+</p>
+<p style="orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<br/>
+
+</p>
+<h2 class="western" align="justify" style="orphans: 2; widows: 2"><em><span style="font-variant: normal"><font color="#ff0040"><font face="Arial, Helvetica, sans-serif"><font size="6" style="font-size: 22pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>Compiling
+our driver</b></span></span></span></font></font></font></span></em></h2>
+<p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt">Once
+we have the C code, it is time to compile it and create the module
+file hello_world_module.ko. creating a Makefile for your module is
+straightforward.</font></font></font></p>
+<p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<br/>
+
+</p>
+<p align="justify" style="line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><span style="font-variant: normal"><font color="#8f187c"><font face="inherit"><font size="1" style="font-size: 8pt"><span style="letter-spacing: normal"><span style="font-style: normal"><b><em>obj-m
++= hello_world.o</span></b></span></span></font></font></font></span></em></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="1" style="font-size: 8pt"><b><font color="#8f187c">ifdef
+ARCH</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="1" style="font-size: 8pt"><b><font color="#8f187c">#You
+can update your Beaglebone path here.</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="1" style="font-size: 8pt"><b><span style="background: #fff200"><font color="#8f187c">KDIR
+= /home/embetronicx/BBG/tmp/lib/modules/5.10.65/build</span></span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="1" style="font-size: 8pt"><b><font color="#8f187c">else</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="1" style="font-size: 8pt"><b><font color="#8f187c">KDIR
+= /lib/modules/$(shell uname -r)/build</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="1" style="font-size: 8pt"><b><font color="#8f187c">endif</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="1" style="font-size: 8pt"><b><font color="#8f187c">all:</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="1" style="font-size: 8pt"><b><font color="#8f187c">make
+-C $(KDIR) M=$(shell pwd) modules</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="1" style="font-size: 8pt"><b><font color="#8f187c">clean:</span></b></font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="1" style="font-size: 8pt"><b><font color="#8f187c">make
+-C $(KDIR) M=$(shell pwd) clean</span></b></font></font></font></p>
+<p align="justify" style="line-height: 100%; orphans: 2; widows: 2; margin-bottom: 0in">
+<br/>
+
+</p>
+<p align="justify" style="orphans: 2; widows: 2"><em><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">The
+C code (</span></span></span></span></font></font></font></span></em><em><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>hello_world_module.c</b></span></span></span></font></font></font></span></code></strong></em><em><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">)
+and Makefile are ready, all we need to do is invoke make to build our
+first driver (</span></span></span></span></font></font></font></span></em><em><strong><code class="western"><span style="font-variant: normal"><font color="#196619"><font face="Monaco, Consolas, Andale Mono, DejaVu Sans Mono, monospace"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><b>hello_world_module
+.ko</b></span></span></span></font></font></font></span></code></strong></em><em><span style="font-variant: normal"><font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="zxx"><span style="font-style: normal"><span style="font-weight: normal">).</span></span></span></span></font></font></font></span></em></p>
+<h2 lang="zxx" class="western" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2; margin-top: 0in; margin-bottom: 0.21in; border: none; padding: 0in"><a name="Demo_in_Beaglebone"></a>
+<font color="#ff0040"><font face="Arial, Helvetica, sans-serif"><font size="6" style="font-size: 22pt"><b>Demo
+in Beaglebone</b></font></font></font></h2>
+<p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt">If
+you are using the Beaglebone board, please follow the below video. If
+you are using Ubuntu or Raspberry Pi, then please skip this video and
+go ahead with the next part.</font></font></font></p>
+<p lang="zxx" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt">You
+can cross-compile the Linux device driver using the below command.</font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="1" style="font-size: 8pt"><b><span style="background: #fff200"><font color="#8f187c">sudo
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-</span></span></b></font></font></font></p>
+<p style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2; margin-bottom: 0in; border: none; padding: 0in">
+<font color="#000000"><font face="Arial, Helvetica, sans-serif"><font size="3" style="font-size: 12pt">Then
+copy the driver to the Beaglebone using the below command.</font></font></font></p>
+<p align="left" style="font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2; margin-bottom: 0in">
+<span style="display: inline-block; border: none; padding: 0in"><font face="inherit"><font size="1" style="font-size: 8pt"><b><span style="background: #fff200"><font color="#8f187c">sudo
+rsync -avz *.ko debian@192.168.7.2:/home/debian</span></span></b></font></font></font></p>
+<p style="margin-bottom: 0in"><br/>
+<br/>
+
+</p>
+</body>
+</html>
